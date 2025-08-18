@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* Core Background & Foreground */
+    --background: 0 0% 100%;
+    --foreground: 222.2 47.4% 11.2%;
+
+    /* Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 47.4% 11.2%;
+    --surface: 220 14% 96%;
+    --surface-hover: 220 14% 93%;
+
+    /* Brand Colors */
+    --primary: 262 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 262 100% 55%;
+    --primary-glow: 262 100% 60%;
+
+    /* Secondary System */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-hover: 220 14% 90%;
+
+    /* Muted & Subtle */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    /* Accent Colors */
+    --accent: 262 100% 60%;
+    --accent-foreground: 0 0% 100%;
+    --accent-subtle: 262 100% 97%;
+
+    /* Chat Message Colors */
+    --message-user: 262 100% 60%;
+    --message-user-foreground: 0 0% 100%;
+    --message-ai: 220 14% 96%;
+    --message-ai-foreground: 222.2 47.4% 11.2%;
+
+    /* Upload Zone */
+    --upload-border: 220 14% 91%;
+    --upload-hover: 262 100% 97%;
+    --upload-active: 262 100% 95%;
+
+    /* System Colors */
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* Border & Input */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 262 100% 60%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer components {
+  @keyframes upload-success {
+    0% {
+      transform: scale(1);
+    }
+
+    50% {
+      transform: scale(1.05);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes message-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes typing-dots {
+
+    0%,
+    20% {
+      opacity: 0.4;
+    }
+
+    50% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0.4;
+    }
+  }
+
+  @keyframes float-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Upload Zone Animations */
+  .upload-success {
+    animation: upload-success 0.6s ease-out;
+  }
+
+  .upload-zone {
+    @apply relative border-2 border-dashed transition-all duration-300 ease-in-out;
+    border-color: hsl(var(--upload-border));
+  }
+
+  .upload-zone:hover {
+    border-color: hsl(var(--primary));
+    background-color: hsl(var(--upload-hover));
+  }
+
+  .upload-zone.drag-over {
+    border-color: hsl(var(--primary));
+    background-color: hsl(var(--upload-active));
+    transform: scale(1.02);
+  }
+
+  /* Message Animations */
+  .message-enter {
+    animation: message-fade-in 0.4s ease-out;
+  }
+
+  .typing-indicator {
+    @apply flex space-x-1;
+  }
+
+  .typing-dot {
+    @apply w-2 h-2 rounded-full;
+    background-color: hsl(var(--muted-foreground));
+    animation: typing-dots 1.4s infinite ease-in-out;
+  }
+
+  .typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  /* Chat Interface */
+  .chat-container {
+    @apply flex flex-col h-full;
+  }
+
+  .messages-area {
+    @apply flex-1 overflow-y-auto p-4 space-y-4 min-h-0;
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+    max-height: calc(100vh - 200px); /* Ensure it doesn't exceed viewport height */
+  }
+
+  .messages-area::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .messages-area::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .messages-area::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+
+  /* Message Styling */
+  .message-user {
+    @apply ml-auto max-w-xs lg:max-w-md px-4 py-2 rounded-2xl;
+    background-color: hsl(var(--message-user));
+    color: hsl(var(--message-user-foreground));
+  }
+
+  .message-ai {
+    @apply mr-auto max-w-xs lg:max-w-md px-4 py-2 rounded-2xl;
+    background-color: hsl(var(--message-ai));
+    color: hsl(var(--message-ai-foreground));
+  }
+
+  /* Floating Input */
+  .chat-input-container {
+    @apply sticky bottom-0 p-4 border-t backdrop-blur-sm flex-shrink-0;
+    background-color: hsl(var(--background) / 0.8);
+    border-color: hsl(var(--border));
+  }
+
+  .float-in {
+    animation: float-in 0.3s ease-out;
+  }
+}
+
+.reset-tw, .reset-tw *{
+  all: revert !important;
+   
+}
