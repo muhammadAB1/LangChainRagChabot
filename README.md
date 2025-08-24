@@ -37,18 +37,19 @@ Ask questions, and the chatbot retrieves relevant context from your documents to
    ```bash
    git clone https://github.com/your-username/your-repo-name.git
    cd your-repo-name
-   
+   ```
 2. **Start the backend server**
    ```bash
    cd backend
    node index.js
-
+   ```
 3. **Start the frontend**
    ```bash
    cd frontend
    pnpm run dev
+   ```
 
-4.**Open your browser and navigate to**
+4. **Open your browser and navigate to**
    ```bash
    http://localhost:5173
    asfasfa
@@ -56,13 +57,15 @@ Ask questions, and the chatbot retrieves relevant context from your documents to
 ##🧩 Setup Requirements##
    ```bash
    ollama pull nomic-embed-text
-```
+   ```
 **environment variables in```.env```**
 ```
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_anon_key
 OLLAMA_MODEL=nomic-embed-text
 ```
+**⭐ If you found this project helpful, don’t forget to check out the LinkedIn post
+ and connect!**
 
 
  
