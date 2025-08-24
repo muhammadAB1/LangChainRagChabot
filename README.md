@@ -57,7 +57,12 @@ Ask questions, and the chatbot retrieves relevant context from your documents to
    ```bash
    ollama pull nomic-embed-text
 ```
-**environment variables in```bash .env```**
+**environment variables in```.env```**
+```
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_anon_key
+OLLAMA_MODEL=nomic-embed-text
+```
 
 
  
