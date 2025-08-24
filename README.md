@@ -54,7 +54,7 @@ Ask questions, and the chatbot retrieves relevant context from your documents to
    http://localhost:5173
    asfasfa
    ```
-##🧩 Setup Requirements##
+## 🧩 Setup Requirements ##
    ```bash
    ollama pull nomic-embed-text
    ```
